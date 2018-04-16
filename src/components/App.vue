@@ -24,8 +24,8 @@
     name: 'App',
     data () {
       return {
-        month: 2,
-        year: 2017
+        month: 4,
+        year: 2018
       }
     },
     computed: {
