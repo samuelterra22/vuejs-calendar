@@ -5,12 +5,14 @@
 <script>
   export default {
     name: 'CalendarDay',
-    props:['day'],
-    computed:{
-      classObject(){
+    props: ['day'],
+    computed: {
+      classObject () {
+        let today = this.day.isSame(this.$moment(), 'day')
         return {
           day: true,
-          today: this.day.isSame(this.$moment(), 'day')
+          today,
+          past: this.day.isSameOrBefore(this.$moment(), 'day') && !today
         }
       }
     }
