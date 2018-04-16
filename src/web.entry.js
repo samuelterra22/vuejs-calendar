@@ -20,8 +20,8 @@ new Vue({
   },
   store:{
     state:{
-      currentYear: 2017,
-      currentMonth: 1
+      currentYear: 2018,
+      currentMonth: 4
     }
   }
 })
