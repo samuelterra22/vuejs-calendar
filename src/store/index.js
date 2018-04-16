@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import moment from 'moment-timezone'
+import Axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -35,13 +36,31 @@ export default new Vuex.Store({
       state.eventFormActive = payload
     },
     addEvent (state, payload) {
-      state.events.push({
-        description: payload,
-        date: state.eventFormDate
-      })
+      state.events.push(payload)
     },
-    eventFormDate(state, payload){
+    eventFormDate (state, payload) {
       state.eventFormDate = payload
+    }
+  },
+  actions: {
+    addEvent (context, payload) {
+
+      return new Promise((resolve, reject) => {
+        let obj = {
+          description: payload,
+          date: context.state.eventFormDate
+        }
+        Axios.post('/add_event', obj)
+          .then(response => {
+            if (response.status === 200) {
+              context.commit('addEvent', obj)
+              resolve()
+
+            } else {
+              reject()
+            }
+          })
+      })
     }
   }
 })
