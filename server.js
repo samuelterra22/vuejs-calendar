@@ -8,8 +8,6 @@ const http = require('http');
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-app.use('/dist', express.static(path.join(__dirname, 'dist')));
-
 app.get('/', (req, res) => {
   let template = fs.readFileSync(path.resolve('./index.html'), 'utf-8');
   res.send(template);
