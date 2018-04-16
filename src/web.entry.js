@@ -1,19 +1,28 @@
-import Vue from 'vue';
-import './style.scss';
+import Vue from 'vue'
+import './style.scss'
 
+import Vuex from 'vuex'
 import moment from 'moment-timezone'
-moment.tz.setDefault('UTC')
-Object.defineProperty(Vue.prototype, '$moment', {get() {return this.$root.moment}})
+import App from './components/App.vue'
 
-import App from './components/App.vue';
+Vue.use(Vuex)
+
+moment.tz.setDefault('UTC')
+Object.defineProperty(Vue.prototype, '$moment', {get () {return this.$root.moment}})
 
 new Vue({
   el: '#app',
-  data:{
+  data: {
     moment
   },
   components: {
     App
+  },
+  store:{
+    state:{
+      currentYear: 2017,
+      currentMonth: 1
+    }
   }
-});
+})
 

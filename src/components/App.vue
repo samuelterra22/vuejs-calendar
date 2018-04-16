@@ -22,13 +22,13 @@
 
   export default {
     name: 'App',
-    data () {
-      return {
-        month: 4,
-        year: 2018
-      }
-    },
     computed: {
+      month () {
+        return this.$store.state.currentMonth
+      },
+      year () {
+        return this.$store.state.currentYear
+      },
       days () {
 
         // Generating all daus in current month
