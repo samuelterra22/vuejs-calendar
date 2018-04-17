@@ -25,15 +25,16 @@ app.get('/', (req, res) => {
   let contentMarker = '<!--APP-->'
 
   if (renderer) {
-    renderer.renderToString({}, (err, html) =>{
+    renderer.renderToString({events}, (err, html) =>{
       if (err) {
         console.log(err)
       }else{
-        console.log(html)
+        res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__ = ${serialize(events)}</script>\n${html}`));
       }
     })
+  }else {
+    res.send('<p>Awaiting compilation...</p>')
   }
-  res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__ = ${serialize(events)}</script>`));
 
 });
 
