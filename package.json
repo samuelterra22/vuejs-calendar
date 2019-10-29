@@ -40,7 +40,7 @@
     "file-loader": "^2.0.0",
     "js-object-pretty-print": "^0.3.0",
     "node-sass": "^4.1.1",
-    "open": "0.0.5",
+    "open": "7.0.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.23.1",
     "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony",
